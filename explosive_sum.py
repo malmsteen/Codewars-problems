@@ -20,5 +20,6 @@ def exp_sum(n):
     return [list(t) for t in tmp]
 
 
-for i in range(100):
-    print(len(exp_sum(i)))
+# for i in range(11):
+for i in sorted(exp_sum(10), key=len, reverse=True):
+    print(i)
