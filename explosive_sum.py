@@ -13,13 +13,16 @@ def exp_sum(n):
     dct = {}
     partitions = []
     for i in range(1, n+1):
-        partitions += [[i] + v for v in exp_sum(n-i)]
+        if n-i not in dct:
+            dct[n-i] = exp_sum(n-i)
+        partitions += [[i] + v for v in dct[n-i]]
         # print(partitions)
         s += len(exp_sum(n-i))
     tmp = set([tuple(sorted(p)) for p in partitions])
     return [list(t) for t in tmp]
 
 
-# for i in range(11):
-for i in sorted(exp_sum(10), key=len, reverse=True):
-    print(i)
+for i in range(51):
+    print(len(exp_sum(i)))
+# for i in sorted(exp_sum(40), key=len, reverse=True):
+#     print(i)
