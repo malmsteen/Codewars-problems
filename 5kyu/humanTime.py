@@ -14,20 +14,22 @@ def format_duration(seconds):
 
     if seconds == 0:
         return 'now'
-    ss = seconds % 60
-    mm = seconds // 60
-    hh = mm // 60
-    dd = hh // 24
-    yy = dd // 365
 
+    ss = seconds % 60
+    mm = seconds // 60 % 60
+    hh = seconds // 3600 % 24
+    dd = seconds // 3600 // 24 % 365
+    yy = seconds // 3600 // 24 // 365
     times = [yy, dd, hh, mm, ss]
     durs = ['year', 'day', 'hour', 'minute', 'second']
     ans = ''
 
-    if len(times) == 1:
-        idx = [i for i, e in enumerate(a) if e != 0]
-        return format_period(times[idx], durs[idx])
-    for t, d in zip(times[:-2], durs[:-2]):
-        ans += f'{format_period(t, d)}, '
-    ans += f'{format_period(times[-2], durs[-2])} '
-    ans += f'and {format_period(times[-1], durs[-1])}'
+    for t, d in zip(times, durs):
+        ans += f'{format_period(t,d)}'
+
+    splitted = [s for s in ans.split(', ') if s != '']
+    if len(splitted) == 1:
+        return splitted[0]
+
+    ans = ', '.join(splitted[:-1]) + f' and {splitted[-1]}'
+    return ans
