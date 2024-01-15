@@ -1,3 +1,5 @@
+# https://www.codewars.com/kata/550f22f4d758534c1100025a
+
 import regex as re
 
 a = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]
