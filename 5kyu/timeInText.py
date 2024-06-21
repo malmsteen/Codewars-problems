@@ -1,5 +1,4 @@
-# https://www.codewars.com/kata/52685f7382004e774f0001f7
-
+# https://www.codewars.com/kata/52742f58faf5485cae000b9a
 
 def format_period(n, dur):
     if n == 0:
